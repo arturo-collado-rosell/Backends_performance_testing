@@ -1,0 +1,14 @@
+
+FROM python:3.9
+
+RUN apt-get update && apt-get install -y nodejs npm
+RUN npm install -g autocannon 
+
+# Copiar archivos de proyecto
+WORKDIR /app
+COPY . .
+
+
+# Ejecutar script de Python que utiliza autocannon
+#CMD ["python3", "autocannon/test_performance.py"]
+CMD sh -c "sleep 10 && python3 autocannon/test_performance.py "

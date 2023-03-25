@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  flask:
+    build: 
+      # context: ./Flask
+      context: .
+      dockerfile: Dockerfile_Flask
+    volumes:
+      # - /Flask:/app
+      - .:/app
+    # healthcheck:
+    #   test: ["CMD-SHELL", "curl --fail http://localhost:5000/healtcheck || exit 1"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 5  
+    ports:
+      - "5000:5000"  
+      
+
+  sanic:
+    build: 
+      # context: ./Flask
+      context: .
+      dockerfile: Dockerfile_Sanic
+    volumes:
+      - .:/app
+    # healthcheck:
+    #   test: ["CMD-SHELL", "curl --fail http://localhost:5001/healtcheck || exit 1"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 5  
+    ports:
+      - "5001:5001"     
+
+  express:
+    build: 
+      context: .
+      dockerfile: Dockerfile_express
+    volumes:
+      - .:/app
+    # healthcheck:
+    #   test: ["CMD-SHELL", "curl --fail http://localhost:3000"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 5  
+    ports:
+      - "3000:3000"       
+       
+
+  autocannon:
+    build: 
+      context: .
+      dockerfile: Dockerfile_autocannon  
+    volumes:
+      - .:/app    
+    depends_on:
+      flask:
+        condition: service_healthy  
+      sanic:
+        condition: service_healthy  

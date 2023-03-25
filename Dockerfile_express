@@ -1,0 +1,8 @@
+FROM node:14-alpine
+RUN apk add --no-cache build-base
+
+WORKDIR /app
+COPY . .
+RUN npm init --yes
+RUN npm install express 
+CMD ["node", "Express/app.js"]
