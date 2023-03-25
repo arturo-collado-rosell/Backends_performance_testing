@@ -8,7 +8,7 @@ servers = {'flask':5000, 'sanic':5001, 'express':3000}
 
 if __name__ == '__main__':
     d_l = [10,20,30] # test duration,seconds
-    c_l = [10,100,1000] #connection number or clients
+    c_l = [10,100,500,1000, 2000,4000,10000] #connection number or clients
     w_l = [0,2,4,6] #workers number
     output_dir ='test_outputs' 
     os.makedirs(output_dir, exist_ok=True)

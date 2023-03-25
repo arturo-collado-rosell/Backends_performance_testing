@@ -54,8 +54,8 @@ services:
       dockerfile: Dockerfile_autocannon  
     volumes:
       - .:/app    
-    depends_on:
-      flask:
-        condition: service_healthy  
-      sanic:
-        condition: service_healthy  
+    # depends_on:
+    #   flask:
+    #     # condition: service_healthy  
+    #   sanic:
+    #     # condition: service_healthy  
