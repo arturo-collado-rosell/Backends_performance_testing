@@ -2,6 +2,14 @@
 
 Here we study the performance of Flask, Sanic, and Express. To do this, docker-compose is used so that it is easy to play with the repository and reproduce the results. To measure the performance of each backend, autocannon is used to make requests, which allows controlling the number of connections that are established with each server.
 
+Each server has the same route to test, e.g for Flask: 
+
+```python
+@app.route('/', methods = ['GET'])
+def test():
+    return {"result":"Hello world!"*10000}
+```    
+
 To run all the servers you must to use the next command:
 
 docker-compose up
