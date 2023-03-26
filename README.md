@@ -1,6 +1,6 @@
 # Backends_performance_testing
 
-Here we study the performance of Flask, Sanic, and Express. To do this, docker-compose is used so that it is easy to play with the repository and reproduce the results. To measure the performance of each backend, autocannon is used to make requests, which allows controlling the number of connections that are established with each server.
+Here we study the performance of Flask, Sanic, and Express. To do this, docker-compose is used so that it is easy to play with the repository and reproduce the results. To measure the performance of each backend, autocannon is used to make requests, which allows controlling the number of connections that are established with each server. You must to install docker and docker compose.
 
 Each server has the same route to test, e.g for Flask: 
 
@@ -12,8 +12,9 @@ def test():
 
 To run all the servers you must to use the next command:
 
+```docker
 docker-compose up
-
+```
 - Sanic server runs on port 5001
 
 - Flask server runs on port 5000
@@ -24,11 +25,17 @@ The container named "autocannon" will wait for 10 seconds and begin to make the 
 
 With the script "process_result.py", you can plot some figures from those tests.
 
-If you want to perform a test on your own, you can enter the "autocannon" container and execute the commands. To create the Docker image, you can run the following command:: docker build -t autocannon -f Dockerfile_autocannon .
+If you want to perform a test on your own, you can enter the "autocannon" container and execute the commands. To create the Docker image, you can run the following command:
+
+```docker
+docker build -t autocannon -f Dockerfile_autocannon .
+```
 
 After you execute the container, you can run the following command to open the container prompt:
 
+```docker
 docker run -it --network host autocannon sh
+```
 
 This will open the container prompt, and you can execute your customized "autocannon" commands.
 
