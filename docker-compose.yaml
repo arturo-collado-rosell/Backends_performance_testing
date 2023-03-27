@@ -33,6 +33,21 @@ services:
     ports:
       - "5001:5001"     
 
+  fastapi:
+    build: 
+      # context: ./Flask
+      context: .
+      dockerfile: Dockerfile_FastAPI
+    volumes:
+      - .:/app
+    # healthcheck:
+    #   test: ["CMD-SHELL", "curl --fail http://localhost:5001/healtcheck || exit 1"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 5  
+    ports:
+      - "5002:5002"         
+
   express:
     build: 
       context: .

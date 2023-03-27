@@ -1,2 +1,4 @@
 flask
 sanic
+fastapi
+uvicorn
