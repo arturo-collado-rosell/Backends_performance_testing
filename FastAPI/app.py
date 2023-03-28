@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
-import multiprocessing
+#import multiprocessing
 
 app = FastAPI()
 
@@ -13,5 +13,5 @@ def healthcheck():
     return 'OK'
 
 if __name__ == "__main__":
-    num_cores = multiprocessing.cpu_count()
-    uvicorn.run(app, host="0.0.0.0", port=5002, workers = num_cores, reload = True)
+    #num_cores = multiprocessing.cpu_count()
+    uvicorn.run("app:app", host="0.0.0.0", port=5002, workers = 4)

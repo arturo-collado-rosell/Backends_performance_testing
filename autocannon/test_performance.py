@@ -6,7 +6,8 @@ import time
 import logging
 
 logging.basicConfig(level=logging.INFO)
-servers = {'flask':5000, 'sanic':5001, 'express':3000, 'fastapi':5002}
+# servers = {'flask':5000, 'sanic':5001, 'express':3000, 'fastapi':5002}
+servers = {'fastapi':5002}
 
 if __name__ == '__main__':
     d_l = [10,20,30] # test duration,seconds
